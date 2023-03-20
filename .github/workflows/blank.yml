@@ -32,7 +32,7 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: Run a multi-line script
         run: |
-          Start-Process -FilePath "docker" -Args "pull mcr.microsoft.com/azure-sql-edge:1.0.7"
+          Start-Job { docker pull mcr.microsoft.com/azure-sql-edge:1.0.7 }
           Write-Host "Done..."
         shell: pwsh
       - name: Run a multi-line script
