@@ -37,7 +37,9 @@ jobs:
         shell: pwsh
       - name: Run a multi-line script
         run: |
+          Get-Job
           Start-Sleep -Seconds 15
+          Get-Job
           Write-Host "Done..."
         shell: pwsh
         
