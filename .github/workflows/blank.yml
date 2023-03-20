@@ -37,10 +37,13 @@ jobs:
         shell: pwsh
       - name: Run a multi-line script
         run: |
-          Get-Job
-          Start-Job { docker pull mcr.microsoft.com/azure-sql-edge:1.0.7 }
+          $Job = Start-Job { docker pull mcr.microsoft.com/azure-sql-edge:1.0.7 }
           Start-Sleep -Seconds 15
-          Get-Job
+          while($Job.State -eq "Running")
+          {
+            Write-Host "pulling image..."
+            Start-Sleep -Seconds 1
+          }
           Write-Host "Done..."
         shell: pwsh
         
