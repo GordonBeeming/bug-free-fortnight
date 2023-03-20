@@ -38,6 +38,7 @@ jobs:
       - name: Run a multi-line script
         run: |
           Get-Job
+          Start-Job { docker pull mcr.microsoft.com/azure-sql-edge:1.0.7 }
           Start-Sleep -Seconds 15
           Get-Job
           Write-Host "Done..."
